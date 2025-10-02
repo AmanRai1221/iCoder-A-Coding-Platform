@@ -1048,16 +1048,19 @@
     });
 
     function filterBooks(searchTerm) {
-      const books = document.querySelectorAll('.book-card');
-      
-      books.forEach(book => {
-        const title = book.querySelector('.card-title').textContent.toLowerCase();
-        const description = book.querySelector('.card-text').textContent.toLowerCase();
-        
-        if (title.includes(searchTerm) || description.includes(searchTerm)) {
-          book.style.display = 'block';
-        } else {
-          book.style.display = 'none';
+      const columns = document.querySelectorAll('.col-md-3');
+
+      columns.forEach(col => {
+        const card = col.querySelector('.book-card');
+        if (card) {
+          const title = card.querySelector('.card-title').textContent.toLowerCase();
+          const description = card.querySelector('.card-text').textContent.toLowerCase();
+
+          if (title.includes(searchTerm) || description.includes(searchTerm)) {
+            col.style.display = 'block';
+          } else {
+            col.style.display = 'none';
+          }
         }
       });
     }
